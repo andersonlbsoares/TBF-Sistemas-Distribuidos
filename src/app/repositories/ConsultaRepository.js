@@ -29,12 +29,12 @@ class ConsultaRepository {
     }
 
     findAll() {
-        const sql = "SELECT * FROM consulta ORDER BY id_consulta ASC;";
+        const sql = "SELECT * FROM consulta INNER JOIN animal on consulta.id_animal_consulta = animal.id_animal INNER JOIN tipo_animal on tipo_animal.id_tipo_animal = animal.id_tipo_animal_animal";
         return this.queryConsulta(sql);
     }
 
     findById(idConsulta) {
-        const sql = "SELECT * FROM consulta WHERE id_consulta = $1;";
+        const sql = "SELECT * FROM consulta INNER JOIN animal on consulta.id_animal_consulta = animal.id_animal INNER JOIN tipo_animal on tipo_animal.id_tipo_animal = animal.id_tipo_animal_animal WHERE id_consulta = $1;";
         return this.queryConsulta(sql, [idConsulta]);
     }
 

@@ -4,8 +4,29 @@ import TokenService from "../services/TokenService.js";
 
 class ConsultaController {
   async findAll(request, response) {
+    let result = []
+
     try {
-      const result = await ConsultaRepository.findAll();
+      const raw = await ConsultaRepository.findAll();
+
+      raw.forEach((line) => {
+        result.push({
+          idConsulta: line.id_consulta,
+          statusConsulta: line.status_consulta,
+          dataConsulta: line.data_consulta,
+          animal: {
+            idAnimal: line.id_animal,
+            nomeAnimal: line.nome_animal,
+            idadeAnimal: line.idade_animal,
+            atributoAnimal: line.atributo_animal,
+            tipoAnimal: {
+              idTipoAnimal: line.id_tipo_animal,
+              nomeTipoAnimal: line.nome_tipo_animal,
+            },
+          },
+        });
+      });
+
       response.json(result);
     } catch (error) {
       response.json(error);
@@ -14,13 +35,31 @@ class ConsultaController {
 
   async findById(request, response) {
     const id = request.params.idConsulta;
+
+    let result = []
     try {
-      const result = await ConsultaRepository.findById(id);
-      if (Object.keys(result).length == 0) {
-        response.json({ message: "ID not found" });
-      } else {
-        response.json(result);
-      }
+
+      const raw = await ConsultaRepository.findById(id);
+
+      raw.forEach((line) => {
+        result.push({
+          idConsulta: line.id_consulta,
+          statusConsulta: line.status_consulta,
+          dataConsulta: line.data_consulta,
+          animal: {
+            idAnimal: line.id_animal,
+            nomeAnimal: line.nome_animal,
+            idadeAnimal: line.idade_animal,
+            atributoAnimal: line.atributo_animal,
+            tipoAnimal: {
+              idTipoAnimal: line.id_tipo_animal,
+              nomeTipoAnimal: line.nome_tipo_animal,
+            },
+          },
+        });
+      });
+
+      response.json(result);
     } catch (error) {
       response.json(error);
     }
