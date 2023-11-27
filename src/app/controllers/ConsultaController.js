@@ -48,13 +48,12 @@ class ConsultaController {
         response.json({ message: "ID not found" });
       } else {
         try {
-          const cliente = new Consulta(
-            request.body.idConsulta,
+          const consulta = new Consulta(
             request.body.idAnimalConsulta,
             request.body.statusConsulta,
             request.body.dataConsulta,
           );
-          await ConsultaRepository.update(id, cliente);
+          await ConsultaRepository.update(id, consulta);
           response.json({ message: "Success" });
         } catch (error) {
           response.json(error);
@@ -83,7 +82,6 @@ class ConsultaController {
   async store(request, response) {
     try {
       const consulta = new Consulta(
-        request.body.idConsulta,
         request.body.idAnimalConsulta,
         request.body.statusConsulta,
         request.body.dataConsulta,

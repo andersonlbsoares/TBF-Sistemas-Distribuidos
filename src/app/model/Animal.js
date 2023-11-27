@@ -20,7 +20,7 @@ class Animal {
     }
 
     get nomeAnimal() {
-        return this.__nomeAnimal;
+        return this._nomeAnimal;
     }
 
     get idadeAnimal() {
@@ -37,10 +37,6 @@ class Animal {
 
     get atributoAnimal() {
         return this._atributoAnimal;
-    }
-
-    set idAnimal(idAnimal) {
-        this._idAnimal = idAnimal;
     }
 
     set nomeAnimal(nomeAnimal) {

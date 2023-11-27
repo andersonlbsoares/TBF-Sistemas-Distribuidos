@@ -34,7 +34,6 @@ class AnimalController {
       } else {
         try {
           const animal = new Animal(
-            request.body.idAnimal,
             request.body.nomeAnimal,
             request.body.idadeAnimal,
             request.body.donoAnimal,
@@ -70,14 +69,12 @@ class AnimalController {
   async store(request, response) {
     try {
       const animal = new Animal(
-        request.body.idAnimal,
         request.body.nomeAnimal,
         request.body.idadeAnimal,
         request.body.donoAnimal,
         request.body.idTipoAnimalAnimal,
         request.body.atributoAnimal
       );
-
       await AnimalRepository.create(animal);
       response.json({ message: "Success" });
     } catch (error) {

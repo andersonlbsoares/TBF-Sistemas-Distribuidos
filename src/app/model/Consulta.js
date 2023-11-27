@@ -4,8 +4,7 @@ class Consulta {
     _statusConsulta;
     _dataConsulta;
 
-    constructor(idConsulta, idAnimalConsulta, statusConsulta, dataConsulta) {
-        this._idConsulta = idConsulta;
+    constructor(idAnimalConsulta, statusConsulta, dataConsulta) {
         this._idAnimalConsulta = idAnimalConsulta;
         this._statusConsulta = statusConsulta;
         this._dataConsulta = dataConsulta;
@@ -25,10 +24,6 @@ class Consulta {
 
     get dataConsulta() {
         return this._dataConsulta;
-    }
-
-    set idConsulta(idConsulta) {
-        this._idConsulta = idConsulta;
     }
 
     set idAnimalConsulta(idAnimalConsulta) {
